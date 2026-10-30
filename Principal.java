@@ -1,8 +1,8 @@
 package a1;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.ArrayList; // "banco de dados"
+import java.util.List; // 
+import java.util.Scanner; // puxa o que o usuário digita 
 
 public class Principal {
 
@@ -25,6 +25,7 @@ public class Principal {
           System.out.println("Saindo do sistema. Até logo.");
           continuar = false;
         }
+        case "5" -> resumoFolha(); // exibe o resumo da folha (quantidade, total e média salarial)
         default -> System.out.println("Opção inválida. Tente novamente.");
       }
     }
@@ -38,6 +39,7 @@ public class Principal {
     System.out.println("2. Registrar Colaborador Comissionado");
     System.out.println("3. Registrar Colaborador de Produção");
     System.out.println("4. Gerar Folha de Pagamento");
+    System.out.println("5. Exibir Resumo da Folha");
     System.out.println("0. Sair");
     System.out.print("Selecione uma opção: ");
   }
@@ -102,5 +104,27 @@ public class Principal {
             System.out.printf("Salário: R$ %.2f%n", colaborador.calcularSalario());
             System.out.println("---------------------------"); 
         }
+    }
+
+    // Exibir resumo da folha de pagamento
+    private static void resumoFolha() {
+        System.out.println("\n--- Resumo da Folha de Pagamento ---");
+        if (colaboradores.isEmpty()) {
+            System.out.println("Nenhum colaborador encontrado no banco de dados."); // evita dividir por zero no cálculo da média
+            return;
+        }
+
+        int quantidade = colaboradores.size(); // quantidade total de colaboradores cadastrados
+        double totalFolha = 0; // acumulador: começa em 0 e vai somando o salário de cada colaborador
+
+        for (colaborador c : colaboradores) {
+            totalFolha += c.calcularSalario(); // cada tipo de colaborador calcula o próprio salário (polimorfismo)
+        }
+
+        double mediaSalarial = totalFolha / quantidade; // média = soma total dos salários ÷ quantidade de colaboradores
+
+        System.out.println("Quantidade de colaboradores: " + quantidade);
+        System.out.printf("Total da folha de pagamento: R$ %.2f%n", totalFolha);
+        System.out.printf("Média salarial: R$ %.2f%n", mediaSalarial);
     }
 }

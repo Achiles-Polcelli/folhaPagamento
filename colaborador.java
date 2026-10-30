@@ -8,7 +8,7 @@ public abstract class colaborador { // classe abstrata colaborador, que serve co
 
     public colaborador(String numRegistro, String nome) { // construtor da classe colaborador, que recebe o número de registro e o nome do colaborador
         this.numRegistro = numRegistro;
-        this.nome = nome;
+        this.nome = nome; 
     }
 
     public String getNome() {
