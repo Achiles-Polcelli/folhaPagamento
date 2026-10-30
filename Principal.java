@@ -21,11 +21,11 @@ public class Principal {
         case "2" -> colaboradorComissionado();
         case "3" -> colaboradorProducao();
         case "4" -> gerarFolhaPagamento();
+        case "5" -> resumoFolha(); // exibe o resumo da folha (quantidade, total e média salarial)
         case "0" -> {
           System.out.println("Saindo do sistema. Até logo.");
           continuar = false;
         }
-        case "5" -> resumoFolha(); // exibe o resumo da folha (quantidade, total e média salarial)
         default -> System.out.println("Opção inválida. Tente novamente.");
       }
     }
